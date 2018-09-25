@@ -1,0 +1,5 @@
+#start all VMs in an RG
+az vm start --ids $(az vm list -g $rg-name --query "[].id" -o tsv) --no-wait
+
+#stop all VMs in an RG
+az vm stop --ids $(az vm list -g $rg-name --query "[].id" -o tsv)

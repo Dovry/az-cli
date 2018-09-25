@@ -1,0 +1,20 @@
+az vm create \
+-g $rg-name \
+-n $name \
+--nsg $nsg-name \
+-l $location \
+--authentication-type ssh \
+--admin-username $username \
+--ssh-key-value ~/.ssh/id_rsa.pub \
+--image ubuntults \
+--size Standard_D2s_v3
+
+
+# optional parameters
+
+#set and forget
+--no-wait
+#see if you did everything right
+--validate
+#add the vm to an AS
+--availability-set $name \

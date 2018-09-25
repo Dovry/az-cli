@@ -1,0 +1,4 @@
+az network public-ip update \
+--name $public-ip-name \
+--resource-group $rg-name \
+--dns-name $dns-name

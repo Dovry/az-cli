@@ -1,0 +1,2 @@
+#clip only works if you're using Bash on Windows
+az network public-ip list -g $rg-name | grep ipAddress | clip.exe

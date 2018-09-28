@@ -1,5 +1,11 @@
-#start all VMs in an RG
-az vm start --ids $(az vm list -g $rg-name --query "[].id" -o tsv) --no-wait
+# run this one first to set all the vms as a variable
+vms_ids=$(az vm list -g GROUPNAME --query "[].id" -o tsv) 
 
-#stop all VMs in an RG
-az vm stop --ids $(az vm list -g $rg-name --query "[].id" -o tsv)
+# start
+az vm start --ids $vms_ids --no-wait
+
+# stop (does not deallocate)
+az vm stop --ids $vms_ids --no-wait
+
+# deallocate
+az vm deallocate --ids $vms_ids --no-wait

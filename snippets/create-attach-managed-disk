@@ -1,0 +1,14 @@
+# create
+az disk create \
+-n $NAME \
+-g $RESOURCE_GROUP \
+--location $LOCATION \
+--size-gb $SIZE_IN_GB \
+--sku Standard_LRS \
+--zone 1,2 or 3 \
+--no-wait
+
+# attach
+diskId=$(az disk show -g $RESOURCE_GROUP -n $NAME --query 'id' -o tsv)
+
+az vm disk attach -g $RESOURCE_GROUP --vm-name $VM_NAME --disk $diskId

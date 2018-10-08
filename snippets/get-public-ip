@@ -1,2 +1,2 @@
 #clip only works if you're using Bash on Windows
-az network public-ip list -g $rg-name | grep ipAddress | clip.exe
+az network public-ip list -g RG-NAME --out yaml | grep -e "name\|ipAddress" | grep -v "null\|Basic" | awk '{getline x;print x;}1'| awk '{print $2}' | sed 'N;s/\n/ /' | clip.exe
